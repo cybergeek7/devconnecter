@@ -12,7 +12,8 @@ const User = require('../../models/User');
 // @access  Private
 router.post(
   '/',
-  [auth, [body('text', 'Text is required').not().isEmpty()]],
+  auth,
+  body('text', 'Text is required').not().isEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -169,7 +170,8 @@ router.put('/unlike/:postId', auth, async (req, res) => {
 // @access  Private
 router.post(
   '/comment/:postId',
-  [auth, [body('text', 'Text is required').not().isEmpty()]],
+  auth,
+  body('text', 'Text is required').not().isEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
