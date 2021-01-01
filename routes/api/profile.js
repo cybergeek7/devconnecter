@@ -79,9 +79,8 @@ router.post(
 
     // Normalize social fields to ensure valid URL
     for (const [key, value] of Object.entries(socialFields)) {
-      if (value && value.length > 0) {
-        return (socialFields[key] = normalize(value, { forceHttps: true }));
-      }
+      if (value && value.length > 0)
+        socialFields[key] = normalize(value, { forceHttps: true });
     }
 
     // Add to profileFields
