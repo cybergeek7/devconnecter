@@ -8,6 +8,7 @@ import ProfileForm from '../profile-forms/ProfileForm';
 import AddExperience from '../profile-forms/AddExperience';
 import AddEducation from '../profile-forms/AddEducation';
 import Profiles from '../profiles/Profiles';
+import Profile from '../profile/Profile';
 import PrivateRoute from '../routing/PrivateRoute';
 
 const Routes = () => {
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/profiles' component={Profiles} />
+        <Route exact path='/profile/:userId' component={Profile} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/create-profile' component={ProfileForm} />
         <PrivateRoute exact path='/edit-profile' component={ProfileForm} />
