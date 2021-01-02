@@ -11,7 +11,7 @@ import {
   GET_REPOS,
 } from './types';
 
-// Get current logged in user's profile
+// Get current/logged in user's profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const res = await api.get('/profile/me');
