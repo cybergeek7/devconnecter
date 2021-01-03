@@ -2,6 +2,7 @@ import {
   ADD_POST,
   DELETE_POST,
   GET_POSTS,
+  GET_POST,
   POST_ERROR,
   UPDATE_LIKES,
 } from '../actions/types';
@@ -21,6 +22,13 @@ function postReducer(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false,
+        post: null,
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: payload,
         loading: false,
       };
     case ADD_POST:

@@ -3,6 +3,7 @@ import setAlert from './alert';
 import {
   DELETE_POST,
   GET_POSTS,
+  GET_POST,
   POST_ERROR,
   UPDATE_LIKES,
   ADD_POST,
@@ -79,9 +80,9 @@ export const deletePost = (postId) => async (dispatch) => {
 };
 
 // Add post
-export const addPost = (formData) => async (dispatch) => {
+export const addPost = (text) => async (dispatch) => {
   try {
-    const res = await api.post('/posts', formData);
+    const res = await api.post('/posts', text);
 
     dispatch({
       type: ADD_POST,
@@ -89,6 +90,23 @@ export const addPost = (formData) => async (dispatch) => {
     });
 
     dispatch(setAlert('Post Created', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get post
+export const getPost = (postId) => async (dispatch) => {
+  try {
+    const res = await api.get(`/posts/${postId}`);
+
+    dispatch({
+      type: GET_POST,
+      payload: res.data,
+    });
   } catch (err) {
     dispatch({
       type: POST_ERROR,
