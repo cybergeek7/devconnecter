@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const { body, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 // @route   POST api/posts
@@ -13,7 +12,7 @@ const User = require('../../models/User');
 router.post(
   '/',
   auth,
-  body('text', 'Text is required').not().isEmpty(),
+  check('text', 'Text is required').not().isEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -171,7 +170,7 @@ router.put('/unlike/:postId', auth, async (req, res) => {
 router.post(
   '/comment/:postId',
   auth,
-  body('text', 'Text is required').not().isEmpty(),
+  check('text', 'Text is required').not().isEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
