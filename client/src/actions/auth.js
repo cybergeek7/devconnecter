@@ -1,5 +1,5 @@
 import api from '../utils/api.js';
-import { setAlert } from './alert';
+import setAlert from './alert';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
